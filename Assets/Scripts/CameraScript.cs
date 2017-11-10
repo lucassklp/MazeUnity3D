@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour {
 
-    public float speed = 5.0f;
-    public float rotateSpeed = 50f;
+    public float speed = 2000.0f;
+    public float rotateSpeed = 500f;
 
     // Use this for initialization
     void Start () {
@@ -15,22 +15,22 @@ public class CameraScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * rotateSpeed);
+        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * rotateSpeed);
 
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             transform.Translate(new Vector3(0, 0, -speed * Time.deltaTime));
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
         }
